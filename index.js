@@ -2,7 +2,9 @@ const express = require('express');
 const mysql = require('mysql');
 const { promisify } = require('util')
 const app = express();
-const port = 4000;
+//const port = process.env.PORT;
+
+app.set('port', process.env.port || 4000);
 
 database = {
 		host: 'awa-de-ewe-sabor-a-uwu.mysql.database.azure.com',
@@ -41,6 +43,6 @@ app.get("/", async (req, res) => {
 });
 
 
-app.listen(port, () => {
-	console.log(`Api listening on port ${port}`)
+app.listen(app.get('port'), () => {
+  console.log(`Api listening on port`, app.get('port'));
 })

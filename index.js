@@ -37,7 +37,7 @@ pool.query = promisify(pool.query);
 app.get("/", async (req, res) => {
   const usuarios = await pool.query("SELECT * FROM usuarios");
   console.log(usuarios);
-  res.send("Library API");
+  res.send(usuarios);
 });
 
 

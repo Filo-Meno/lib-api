@@ -4,7 +4,7 @@ const { promisify } = require('util')
 const app = express();
 //const port = process.env.PORT;
 
-app.set('port', process.env.port || 4000);
+app.set('port', process.env.PORT || 4000);
 
 database = {
 		host: 'awa-de-ewe-sabor-a-uwu.mysql.database.azure.com',

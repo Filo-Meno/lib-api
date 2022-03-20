@@ -1,0 +1,16 @@
+# @name listar
+GET http://localhost:4000/api/materias
+Content-Type: application/json
+###
+
+# @name agregar
+POST http://localhost:4000/api/materias/add
+Content-Type: application/json
+
+{
+	"nombre": "Matematica",
+	"nivel": "Secundaria"
+}
+###
+
+

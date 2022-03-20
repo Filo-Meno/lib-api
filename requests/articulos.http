@@ -1,0 +1,18 @@
+# @name listar
+GET http://localhost:4000/api/articulos
+Content-Type: application/json
+###
+
+# @name agregar
+POST http://localhost:4000/api/articulos/add
+Content-Type: application/json
+
+{
+	"tema": "Ruffini",
+	"enlace": "https://www.superprof.es/apuntes/escolar/matematicas/algebra/polinomios/ruffini.html",
+	"tipo": "Articulo",
+	"idMateria": 1 
+}
+###
+
+

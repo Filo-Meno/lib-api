@@ -14,7 +14,7 @@ CREATE TABLE Usuario(
 	idUsuario INT,
 );*/
 
-CREATE TABLE Item(
+CREATE TABLE Favorito(
 	idArticulo INT,
 	idUsuario INT,
 	primary KEY(idUsuario, idArticulo),

@@ -1,0 +1,9 @@
+# @name agregar
+POST http://localhost:4000/api/login
+Content-Type: application/json
+
+{
+	"nombreUsuario": "DaeL1234",
+	"contraseña": "uwu"
+}
+###

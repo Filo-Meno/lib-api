@@ -22,6 +22,7 @@ app.use('/api/usuarios', require('./routes/usuarios'));
 app.use('/api/articulos', require('./routes/articulos'));
 app.use('/api/materias', require('./routes/materia'));
 app.use('/api/items', require('./routes/items'));
+app.use('/api/login', require('./routes/login'));
 
 // Start API
 app.listen(app.get('port'), () => {

@@ -15,4 +15,15 @@ Content-Type: application/json
 }
 ###
 
+# @name agregar2
+POST https://edu-repo.azurewebsites.net/api/articulos/add
+Content-Type: application/json
+
+{
+	"tema": "Ruffini para escolares",
+	"enlace": "https://www.superprof.es/apuntes/escolar/matematicas/algebra/polinomios/ruffini.html",
+	"tipo": "Articulo",
+	"idMateria": 1 
+}
+###
 

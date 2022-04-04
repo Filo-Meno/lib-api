@@ -1,4 +1,24 @@
-const mysql = require('mysql');
+const { Sequelize } = require('sequelize');
+const { host, user, password, database } = require("./keys");
+
+const sequelize = new Sequelize(database, user, password, {
+  host: host,
+  dialect: 'mysql'
+});
+
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Conexion establecida satisfactoriamente");
+  })
+  .catch((err) => {
+    console.error("No se pudo conectar a la base de datos");
+  });
+
+module.exports = sequelize;
+
+/*const mysql = require('mysql');
 const { promisify } = require('util');
 
 const { database } = require('./keys');
@@ -26,4 +46,4 @@ pool.getConnection((err, connection) => {
 
 pool.query = promisify(pool.query);
 
-module.exports = pool;
+module.exports = pool;*/

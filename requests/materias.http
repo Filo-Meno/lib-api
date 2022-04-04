@@ -13,4 +13,13 @@ Content-Type: application/json
 }
 ###
 
+# @name agregar2
+POST https://edu-repo.azurewebsites.net/api/materias/add
+Content-Type: application/json
+
+{
+	"nombre": "Historia del Perú",
+	"nivel": "Secundaria"
+}
+###
 

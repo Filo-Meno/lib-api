@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const extUsuario = (req, res, next) => {
+const extPub = (req, res, next) => {
 	const authorization = req.get('authorization');
 	let token = ''
 
@@ -11,15 +11,15 @@ const extUsuario = (req, res, next) => {
 	const decodedToken = jwt.verify(token, 'uwu');
 	console.log(decodedToken);
 
-	if (!token || !decodedToken.idUsuario) {
+	if (!token || !decodedToken.idPublicador) {
 		return res.status(401).json({error: 'Falta token o es invalido'})
 	}
 
-	const { idUsuario } = decodedToken;
+	const { idPublicador } = decodedToken;
 
-	req.idUsuario = idUsuario;
+	req.idPublicador = idPublicador;
 
 	next();
 }
 
-module.exports = extUsuario;
+module.exports = extPub;

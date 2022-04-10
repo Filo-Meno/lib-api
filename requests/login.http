@@ -1,9 +1,20 @@
-# @name agregar
+# @name loginUsuario
 POST http://localhost:4000/api/login
 Content-Type: application/json
 
 {
-	"nombreUsuario": "DaeL1234",
-	"contraseña": "uwu"
+	"correo": "uwu@uwu.com",
+	"contraseña": "uwu",
+	"esPublicador": false 
+}
+###
+# @name loginPublicador
+POST http://localhost:4000/api/login
+Content-Type: application/json
+
+{
+	"correo": "general@edurepo.com",
+	"contraseña": "uwu",
+	"esPublicador": true
 }
 ###

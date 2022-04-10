@@ -1,43 +1,39 @@
 const express = require('express');
 const router = express.Router();
-const Usuario = require('../models/usuario');
+const Publicador = require('../models/publicador');
 const bcrypt = require('bcrypt');
 
 router.get('/', async (req, res) => {
-  const usuarios = await Usuario.findAll();
-  res.send(usuarios);
+  const publicadores = await Publicador.findAll();
+  res.send(publicadores);
 });
 
 router.post('/add', async (req, res) => {
-  const { contraseña, nombres, apellidos, edad, correo } = req.body;
+  const { contraseña, nombre, correo } = req.body;
   
   const saltRounds = 10;
   const contraHash = await bcrypt.hash(contraseña, saltRounds);
 
-  const nuevoUsuario = await Usuario.create({
+  const nuevoPublicador = await Publicador.create({
     contraseña: contraHash,
-    nombres,
-    apellidos,
-    edad,
+    nombre,
     correo
   });
-  res.send(nuevoUsuario);
+  res.send(nuevoPublicador);
 });
 
 router.put('/edit/:id', async (req, res) => {
   const { id } = req.params;
-  const { nombres, apellidos, edad, correo } = req.body;
-  await Usuario.update({
-    nombres,
-    apellidos,
-    edad,
+  const { nombre, correo } = req.body;
+  await Publicador.update({
+    nombre,
     correo
-  }, { where: {idUsuario: id} });
+  }, { where: {idPublicador: id} });
 });
 
 router.delete('/delete/:id', async (req, res) => {
   const { id } = req.params;
-  await Usuario.destroy({ where: { idUsuario: id } })
+  await Publicador.destroy({ where: { idPublicador: id } })
 });
 
 module.exports = router;

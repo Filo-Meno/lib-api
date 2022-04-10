@@ -1,0 +1,20 @@
+# @name listar
+GET http://localhost:4000/api/publicadores
+Content-Type: application/json
+###
+# @name listar2
+GET https://edu-repo.azurewebsites.net/api/publicadores
+Content-Type: application/json
+###
+# @name agregar
+POST http://localhost:4000/api/publicadores/add
+Content-Type: application/json
+
+{
+	"contraseña": "uwu",
+	"nombre": "General",
+	"correo": "general@edurepo.com"
+}
+###
+
+

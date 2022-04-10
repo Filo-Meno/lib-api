@@ -6,9 +6,10 @@ Content-Type: application/json
 # @name agregar
 POST http://localhost:4000/api/articulos/add
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFB1YmxpY2Fkb3IiOjEsImNvcnJlbyI6ImdlbmVyYWxAZWR1cmVwby5jb20iLCJpYXQiOjE2NDk1NTAwMzV9.pcPeQLpxk_igIl5YFypEdte0Suz4hHCJilFg2QxXM0Q
 
 {
-	"tema": "Ruffini",
+	"tema": "Prueba",
 	"enlace": "https://www.superprof.es/apuntes/escolar/matematicas/algebra/polinomios/ruffini.html",
 	"tipo": "Articulo",
 	"idMateria": 1 

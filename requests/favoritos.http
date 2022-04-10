@@ -1,0 +1,9 @@
+# @name agregar
+POST http://localhost:4000/api/favoritos/add
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVzdWFyaW8iOjcsImNvcnJlbyI6InV3dUB1d3UuY29tIiwiaWF0IjoxNjQ5NTQ1NTcyfQ.z7Qwc9_-gEkicc1L0O6oO_lg4W5jDT1lWZ1B21Dlpps 
+
+{
+	"idArticulo": 1
+}
+###

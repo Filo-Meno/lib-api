@@ -6,7 +6,6 @@ const sequelize = new Sequelize(database, user, password, {
   dialect: 'mysql'
 });
 
-
 sequelize
   .authenticate()
   .then(() => {

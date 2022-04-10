@@ -7,7 +7,7 @@ const Usuario = sequelize.define('Usuario', {
 		type: DataTypes.INTEGER, 
 		primaryKey: true 
 	},
-	nombreUsuario: { type: DataTypes.STRING },
+	//nombreUsuario: { type: DataTypes.STRING },
 	contraseña: { type: DataTypes.STRING },
 	nombres: { type: DataTypes.STRING },
 	apellidos: { type: DataTypes.STRING },

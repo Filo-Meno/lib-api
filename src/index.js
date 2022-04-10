@@ -19,9 +19,10 @@ app.use(express.json());
 // Routes
 app.use(require('./routes/index'));
 app.use('/api/usuarios', require('./routes/usuarios'));
+app.use('/api/publicadores', require('./routes/publicador'));
 app.use('/api/articulos', require('./routes/articulos'));
 app.use('/api/materias', require('./routes/materia'));
-app.use('/api/items', require('./routes/items'));
+app.use('/api/favoritos', require('./routes/favoritos'));
 app.use('/api/login', require('./routes/login'));
 
 // Start API

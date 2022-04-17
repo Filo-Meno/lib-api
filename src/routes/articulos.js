@@ -15,6 +15,9 @@ router.get('/', async (req, res) => {
         //attributes: ["nombre"],
       },
     ],
+    order: [
+      ['numFav', 'DESC'],
+    ],
   });
   res.send(articulos);
 });
@@ -45,6 +48,9 @@ router.get('/filtro/:filtro', async (req, res) => {
         [Op.substring]: filtro,
       },
     },
+    order: [
+      ['numFav', 'DESC'],
+    ],
   });
   res.send(articulos);
 });

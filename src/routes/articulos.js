@@ -56,6 +56,19 @@ router.get('/filtro/:filtro', async (req, res) => {
   res.send(articulos);
 });
 
+router.get('/materia/:id', async (req, res) => {
+  const { id } = req.params;
+  const articulos = await Articulo.findAll({
+    where: {
+      idMateria: id,
+    },
+    order: [
+      ['numFav', 'DESC'],
+    ],
+  });
+  res.send(articulos);
+});
+
 router.get('/tags', async (req, res) => {
   const { tags } = req.body;
   const articulos = await Articulo.findAll(); 

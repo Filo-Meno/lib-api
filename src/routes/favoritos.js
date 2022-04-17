@@ -10,6 +10,12 @@ router.get('/', extUser, async (req, res) => {
   res.send(favoritos);
 });
 
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  const favorito = await Favorito.findByPk(id);
+  res.send(favorito);
+});
+
 router.post('/add', extUser, async (req, res) => {
   const { idArticulo } = req.body;
   const { idUsuario } = req;

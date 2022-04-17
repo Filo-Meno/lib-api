@@ -9,7 +9,7 @@ const Tag = sequelize.define('Tag', {
 	},
 	idArticulo: { 
 		type: DataTypes.INTEGER, 
-		primaryKey: true 
+		primaryKey: true,
 	},
 	nombre: { type: DataTypes.STRING },
 }, {

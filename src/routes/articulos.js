@@ -1,11 +1,57 @@
 const express = require('express');
 const router = express.Router();
 const Articulo = require('../models/articulo');
+const Tag = require('../models/tag');
+const Materia = require('../models/materia');
+const Publicador = require('../models/publicador');
 const extPub = require('../middleware/extractorPublicador');
 
 router.get('/', async (req, res) => {
-  const articulos = await Articulo.findAll();
+  const articulos = await Articulo.findAll({
+    include: [
+      {
+        model: Tag,
+        as: "tags",
+        //attributes: ["nombre"],
+      },
+    ],
+  });
   res.send(articulos);
+});
+
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  const articulo = await Articulo.findByPk(id, {
+    include: [
+      {
+        model: Publicador,
+        as: "publicador",
+        attributes: { exclude: ['contraseña'] }
+      },
+      {
+        model: Materia,
+        as: "materia",
+      }
+    ],
+  });
+  res.send(articulo);
+});
+
+router.get('/filtro/:filtro', async (req, res) => {
+  const filtro = req.params;
+  const articulos = await Articulo.findAll({
+    where: {
+      tema: {
+        [Op.substring]: filtro,
+      },
+    },
+  });
+  res.send(articulos);
+});
+
+router.get('/tags', async (req, res) => {
+  const { tags } = req.body;
+  const articulos = await Articulo.findAll(); 
 });
 
 router.post('/add', extPub, async (req, res) => {

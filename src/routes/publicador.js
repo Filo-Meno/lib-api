@@ -8,6 +8,12 @@ router.get('/', async (req, res) => {
   res.send(publicadores);
 });
 
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  const publicador = await Publicador.findByPk(id);
+  res.send(publicador);
+});
+
 router.post('/add', async (req, res) => {
   const { contraseña, nombre, correo } = req.body;
   

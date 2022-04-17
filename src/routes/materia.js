@@ -7,6 +7,12 @@ router.get('/', async (req, res) => {
   res.send(materias);
 });
 
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  const materia = await Materia.findByPk(id);
+  res.send(materia);
+});
+
 router.post('/add', async (req, res) => {
   const { nombre, nivel } = req.body;
   const nuevaMateria = await Materia.create({

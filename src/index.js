@@ -4,6 +4,7 @@ const cors = require('cors');
 //const path = require('path');
 
 const app = express();
+require('./models/asociaciones');
 
 // Settings
 app.set('port', process.env.PORT || 4000);
@@ -24,7 +25,7 @@ app.use('/api/articulos', require('./routes/articulos'));
 app.use('/api/materias', require('./routes/materia'));
 app.use('/api/favoritos', require('./routes/favoritos'));
 app.use('/api/login', require('./routes/login'));
-
+app.use('/api/tags', require('./routes/tag'));
 // Start API
 app.listen(app.get('port'), () => {
   console.log(`Api listening on port`, app.get('port'));

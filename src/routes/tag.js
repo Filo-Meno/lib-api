@@ -1,10 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const Tag = require('../models/materia');
+const Tag = require('../models/tag');
+/*const Articulo = require('../models/articulo');*/
 
 router.get('/', async (req, res) => {
   const tags = await Tag.findAll();
   res.send(tags);
+});
+
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  const tag = await Tag.findByPk(id);
+  res.send(tag);
 });
 
 router.post('/add', async (req, res) => {

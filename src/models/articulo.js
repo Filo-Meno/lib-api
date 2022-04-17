@@ -19,4 +19,5 @@ const Articulo = sequelize.define('Articulo', {
 	timestamps: false
 });
 
+
 module.exports = Articulo;

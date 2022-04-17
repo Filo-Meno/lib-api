@@ -5,6 +5,7 @@ const Tag = require('../models/tag');
 const Materia = require('../models/materia');
 const Publicador = require('../models/publicador');
 const extPub = require('../middleware/extractorPublicador');
+const { Op } = require('sequelize');
 
 router.get('/', async (req, res) => {
   const articulos = await Articulo.findAll({
@@ -41,7 +42,7 @@ router.get('/:id', async (req, res) => {
 });
 
 router.get('/filtro/:filtro', async (req, res) => {
-  const filtro = req.params;
+  const { filtro } = req.params;
   const articulos = await Articulo.findAll({
     where: {
       tema: {

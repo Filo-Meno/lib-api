@@ -69,16 +69,16 @@ router.put('/edit/:id', extUser, async (req, res) => {
   );
 });
 
-router.delete('/delete/:id', extUser, async (req, res) => {
-  const { id } = req.params;
-  const { idArticulo } = req.body;
+router.delete('/delete/*', extUser, async (req, res) => {
+  const { idArticulo } = req.query;
   const { idUsuario } = req;
   await Favorito.destroy({
     where: {
-      [Op.and]: [{ idFavorito: id }, { idUsuario }],
+      [Op.and]: [{ idArticulo }, { idUsuario }],
     },
   });
   await Articulo.decrement('numFav', { where: { idArticulo } });
+  res.send({message: "Eliminado"});
 });
 
 module.exports = router;

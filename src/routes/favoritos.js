@@ -41,6 +41,23 @@ router.get('/porUsuario/', extUser, async (req, res) => {
   console.log(req.query);
   const { idUsuario } = req;
   const favorito = await Favorito.findAll({
+    include: [
+      {
+        model: Articulo,
+        as: "articulo",
+        include: [
+          {
+            model: Publicador,
+            as: "publicador",
+            attributes: { exclude: ["contraseña"] },
+          },
+          {
+            model: Materia,
+            as: "materia",
+          },
+        ],
+      },
+    ],
     where: {
       idUsuario,
     },

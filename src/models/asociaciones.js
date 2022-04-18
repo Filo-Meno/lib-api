@@ -2,6 +2,7 @@ const Articulo = require('./articulo');
 const Tag = require('./tag'); 
 const Publicador = require('./publicador');
 const Materia = require('./materia');
+const Favorito = require('./favorito');
 
 Articulo.hasMany(Tag, {
 	as: "tags",
@@ -30,3 +31,12 @@ Articulo.belongsTo(Materia, {
   foreignKey: "idMateria"
 });
 
+Articulo.hasMany(Favorito, {
+  as: "favoritos",
+  foreignKey: "idArticulo"
+});
+
+Favorito.belongsTo(Articulo, {
+  as: "articulo",
+  foreignKey: "idArticulo"
+});

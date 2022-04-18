@@ -15,10 +15,17 @@ router.get('/', async (req, res) => {
         as: "tags",
         //attributes: ["nombre"],
       },
+      {
+        model: Publicador,
+        as: "publicador",
+        attributes: { exclude: ["contraseña"] },
+      },
+      {
+        model: Materia,
+        as: "materia",
+      },
     ],
-    order: [
-      ['numFav', 'DESC'],
-    ],
+    order: [["numFav", "DESC"]],
   });
   res.send(articulos);
 });
@@ -69,9 +76,19 @@ router.get('/materia/:id', async (req, res) => {
   res.send(articulos);
 });
 
-router.get('/tags', async (req, res) => {
-  const { tags } = req.body;
-  const articulos = await Articulo.findAll(); 
+router.get('/nivel/:nivel', async (req, res) => {
+  const { nivel } = req.params;
+  const articulos = await Articulo.findAll({
+    include: {
+      model: Materia,
+      as: "materia",
+      where: {
+        nivel
+      }
+    },
+    order: [["numFav", "DESC"]],
+  });
+  res.send(articulos);
 });
 
 router.post('/add', extPub, async (req, res) => {

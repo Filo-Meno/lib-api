@@ -2,12 +2,32 @@ const express = require('express');
 const router = express.Router();
 const Favorito = require('../models/favorito');
 const Articulo = require('../models/articulo');
+const Publicador = require('../models/publicador');
+const Materia = require('../models/materia');
 const extUser = require('../middleware/extractorUsuario');
 const { Op } = require('sequelize');
 
 
 router.get('/', extUser, async (req, res) => {
-  const favoritos = await Favorito.findAll();
+  const favoritos = await Favorito.findAll({
+    include: [
+      {
+        model: Articulo,
+        as: "articulo",
+        include: [
+          {
+            model: Publicador,
+            as: "publicador",
+            attributes: { exclude: ["contraseña"] },
+          },
+          {
+            model: Materia,
+            as: "materia",
+          },
+        ],
+      },
+    ],
+  });
   res.send(favoritos);
 });
 

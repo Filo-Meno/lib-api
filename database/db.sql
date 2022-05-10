@@ -1,49 +1,51 @@
-/*
-	BASICS
- */
-
 CREATE TABLE Usuario(
 	idUsuario INT AUTO_INCREMENT PRIMARY KEY,
+	contraseña VARCHAR(200),
 	nombres VARCHAR(50),
 	apellidos VARCHAR(50),
 	edad INT,
+	correo VARCHAR(50)
+);
+
+CREATE TABLE Publicador(
+	idPublicador INT AUTO_INCREMENT PRIMARY KEY,
+	nombre VARCHAR(50),
 	correo VARCHAR(50),
-);
-
-/*CREATE TABLE ListaPrivada(
-	idUsuario INT,
-);*/
-
-CREATE TABLE Favorito(
-	idArticulo INT,
-	idUsuario INT,
-	primary KEY(idUsuario, idArticulo),
-	foreign key (idUsuario) references Usuario(idUsuario),
-	foreign key (idArticulo) references Articulo(idArticulo)
-);
-
-CREATE TABLE Articulo(
-	idArticulo INT auto_increment primary key,
-	tema VARCHAR(100),
-	enlace VARCHAR(300),
-	tipo VARCHAR(20),
-	idMateria INT,
-	foreign key (idMateria) references Materia(idMateria)
+	contraseña VARCHAR(200)
 );
 
 CREATE TABLE Materia(
-	idMateria INT auto_increment primary KEY,
+	idMateria INT AUTO_INCREMENT PRIMARY KEY,
 	nombre VARCHAR(50),
 	nivel VARCHAR(20)
 );
 
-/*
-	ADMIN
-*/
+CREATE TABLE Articulo(
+	idArticulo INT AUTO_INCREMENT PRIMARY KEY,
+	tema VARCHAR(100),
+	descripcion TEXT,
+	enlace VARCHAR(300),
+	tipo VARCHAR(20),
+	numFav INT,
+	idMateria INT,
+	idPublicador INT,
+	FOREIGN KEY (idMateria) REFERENCES Materia(idMateria),
+	FOREIGN KEY (idPublicador) REFERENCES Publicador (idPublicador)
+);
 
-CREATE TABLE Admin(
-	idAdmin INT AUTO_INCREMENT,
-	nombres VARCHAR(50),
-	apellidos VARCHAR(50),
-	dni VARCHAR(9)
+CREATE TABLE Favorito(
+	idFavorito INT AUTO_INCREMENT,
+	idArticulo INT,
+	idUsuario INT,
+	PRIMARY KEY(idFavorito, idUsuario, idArticulo),
+	FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario),
+	FOREIGN KEY (idArticulo) REFERENCES Articulo(idArticulo)
+);
+
+CREATE TABLE Tag(
+	idTag INT AUTO_INCREMENT,
+	idArticulo INT,
+	nombre VARCHAR(40),
+	PRIMARY KEY (idTag, idArticulo),
+	FOREIGN KEY (idArticulo) REFERENCES Articulo (idArticulo)
 );

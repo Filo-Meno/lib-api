@@ -11,10 +11,9 @@ POST http://localhost:4000/api/usuarios/add
 Content-Type: application/json
 
 {
-	"nombreUsuario": "asd",
-	"contraseña": "owo",
-	"nombres": "Estebana",
-	"apellidos": "Carla",
+	"contraseña": "uwu",
+	"nombres": "Esteban",
+	"apellidos": "Carlos",
 	"edad": 21,
 	"correo": "uwu@uwu.com"
 }

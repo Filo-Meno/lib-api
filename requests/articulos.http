@@ -9,7 +9,7 @@ Content-Type: application/json
 ###
 
 # @name listar2
-GET https://edu-repo.azurewebsites.net/api/articulos/filtro/ruffini
+GET https://edu-repo.azurewebsites.net/api/articulos
 Content-Type: application/json
 ###
 
